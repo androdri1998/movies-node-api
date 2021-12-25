@@ -5,7 +5,10 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "DEBUG=app:* ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts ",
-    "test": "jest"
+    "test": "jest",
+    "build-image": "docker build -t <username>/base-project .",
+    "run-image": "docker run -p <PORT>:<PORT_APP> -d <username>/base-project",
+    "image-logs": "docker logs CONTAINER_ID"
   },
   "dependencies": {
     "cors": "^2.8.5",

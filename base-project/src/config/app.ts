@@ -8,7 +8,7 @@ const app = {
     port: process.env.PORT_DB,
   },
   settings: {
-    port: process.env.PORT_APP,
+    port: process.env.PORT,
   }
 }
 
