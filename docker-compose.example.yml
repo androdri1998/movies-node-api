@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  database_pg:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=[username of postgres database]
+      - POSTGRES_PASSWORD=[password for postgres database]
+      - POSTGRES_DB=[database name]
+    ports:
+      - '5432:5432'
+    volumes:
+      - [local folder]:/var/lib/postgresql/data
+
+  base_project:
+    container_name: base-project
+    build:
+      context: ./base-project
+    depends_on:
+      - database_pg
+    ports:
+      - [local port]:3333
+    environment:
+      - DEBUG=[level of debug. default value is 'app:*']
+      - USER_DB=[username of postgres database]
+      - HOST_DB=[host of database. default value is database_pg]
+      - DATABASE_NAME=[database name]
+      - PASSWORD_DB=[password for postgres database]
+      - PORT_DB=[database port]
+      - SECRET=[secret to generate jwt token]
+    volumes:
+      - ./base-project:/usr/src/app
+    command: "node dist/server.js"
