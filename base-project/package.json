@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "DEBUG=app:* ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts ",
+    "dev-build": "./scripts/dev-build.sh",
+    "run-build": "./scripts/run-build.sh",
+    "dev:server": "./scripts/dev-server.sh",
     "test": "jest",
     "build-image": "docker build -t <username>/base-project .",
     "run-image": "docker run -p <PORT>:<PORT_APP> -d <username>/base-project",
@@ -17,6 +19,7 @@
     "docker-compose-stop": "docker-compose stop"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "cors": "^2.8.5",
     "debug": "^4.3.3",
     "dotenv": "^10.0.0",
