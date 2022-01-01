@@ -9,6 +9,7 @@ const app = {
   },
   settings: {
     port: process.env.PORT,
+    // base_project_url: process.env.BASE_PROJECT_URL
   }
 }
 

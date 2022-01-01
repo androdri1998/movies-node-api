@@ -30,3 +30,25 @@ services:
     volumes:
       - ./base-project:/usr/src/app
     command: "node dist/server.js"
+  
+  # another_project:
+  #   container_name: another-project
+  #   build:
+  #     context: ./another-project
+  #   depends_on:
+  #     - database_pg
+  #     - base_project
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - DEBUG=[level of debug. default value is 'app:*']
+  #     - USER_DB=[username of postgres database]
+  #     - HOST_DB=[host of database. default value is database_pg]
+  #     - DATABASE_NAME=[database name]
+  #     - PASSWORD_DB=[password for postgres database]
+  #     - PORT_DB=[database port]
+  #     - SECRET=[secret to generate jwt token]
+  #     - BASE_PROJECT_URL=http://base_project:3333
+  #   volumes:
+  #     - ./another-project:/usr/src/app
+  #   command: "node dist/server.js"

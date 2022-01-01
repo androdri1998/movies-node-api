@@ -3,3 +3,4 @@ tmp/*
 tmp/uploads/*
 !tmp/uploads/.gitkeep
 Dockerfile
+.DS_Store

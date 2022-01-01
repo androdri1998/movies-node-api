@@ -1,9 +1,10 @@
 import HTTPStatusCode from 'http-status-codes';
 
 import AppError from '../../app/errors/AppError';
+// import config from '../../../config/app';
 import messages from '../../app/intl/messages/en-US';
 import IHelloRepository from '../repositories/IHelloRepository';
-import IStorageProvider from '../../app/providers/IStorageProvider';
+// import IStorageProvider from '../../app/providers/IStorageProvider';
 import IDatabaseRepository from '../../app/repositories/IDatabaseRepository';
 
 interface ExecuteDTO {
@@ -27,6 +28,10 @@ export default class HelloGetService {
 
   async execute({ message }: ExecuteDTO): Promise<ExecuteResponse> {
     try {
+      // console.log('app-config-url: ', config.settings.base_project_url);
+      // const responseAxios = await axios.get(`${config.settings.base_project_url}/hello?message=teste_message`);
+      // console.log('response axios ', responseAxios.data);
+
       await this.databaseRepository.beginTransaction();
 
       const response = await this.helloRepository.getDate({ month: 1 });
