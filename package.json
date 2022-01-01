@@ -8,6 +8,6 @@
     "run-build": "./scripts/run-build.sh",
     "dev:server": "./scripts/dev-server.sh",
     "docker-compose-build-script": "./scripts/docker-compose-build.sh",
-    "docker-compose-build-script-service": "./scripts/docker-compose-build-service.sh"
+    "docker-compose-build-service-script": "./scripts/docker-compose-build-service.sh"
   }
 }
