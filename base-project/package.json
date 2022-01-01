@@ -4,9 +4,6 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev-build": "./scripts/dev-build.sh",
-    "run-build": "./scripts/run-build.sh",
-    "dev:server": "./scripts/dev-server.sh",
     "test": "jest",
     "build-image": "docker build -t <username>/base-project .",
     "run-image": "docker run -p <PORT>:<PORT_APP> -d <username>/base-project",
@@ -18,8 +15,7 @@
     "docker-compose-down": "docker-compose down",
     "docker-compose-start": "docker-compose start",
     "docker-compose-stop": "docker-compose stop",
-    "docker-compose-build": "docker-compose build --no-cache",
-    "docker-compose-build-script": "./scripts/docker-compose-build.sh"
+    "docker-compose-build": "docker-compose build --no-cache"
   },
   "dependencies": {
     "axios": "^0.24.0",
