@@ -1,3 +1,9 @@
+tmp/*
+!tmp/uploads
+tmp/uploads/*
+!tmp/uploads/.gitkeep
+Dockerfile
+
 # Logs
 logs
 *.log
@@ -106,3 +112,4 @@ dist
 docker-compose.yml
 
 .DS_Store
+
