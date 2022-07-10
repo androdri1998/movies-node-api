@@ -1,0 +1,97 @@
+-- create docker database
+-- docker run --name [NAME_CONTAINER_IMAGE] -e POSTGRES_USER=[USERNAME] -e POSTGRES_DB=[NAME_DATABASE] -e POSTGRES_PASSWORD=[PASSWORD] -p [PORT_MACHINE]:5432 -d postgress
+
+CREATE TABLE movies(
+  id VARCHAR(50) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  duration INT NOT NULL,
+  launch_date TIMESTAMP NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE users(
+  id VARCHAR(50) PRIMARY KEY,
+  email TEXT NOT NULL,
+  birth_date TIMESTAMP NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE movies_rate(
+  id VARCHAR(50) PRIMARY KEY,
+  rate DECIMAL NOT NULL,
+  user_id VARCHAR(50) NOT NULL,
+  movie_id VARCHAR(50) NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE,
+  FOREIGN KEY(movie_id) REFERENCES movies(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE comment_movie(
+  id VARCHAR(50) PRIMARY KEY,
+  comment TEXT NOT NULL,
+  user_id VARCHAR(50) NOT NULL,
+  movie_id VARCHAR(50) NOT NULL,
+  is_private BOOLEAN NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE,
+  FOREIGN KEY(movie_id) REFERENCES movies(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE groups_watch_list(
+  id VARCHAR(50) PRIMARY KEY,
+  group_name VARCHAR(255) NOT NULL,
+  user_id VARCHAR(50) NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE watch_list(
+  id VARCHAR(50) PRIMARY KEY,
+  user_id VARCHAR(50) NOT NULL,
+  movie_id VARCHAR(50) NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  watched_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE,
+  FOREIGN KEY(movie_id) REFERENCES movies(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE tokens(
+  id VARCHAR(50) PRIMARY KEY,
+  token TEXT NOT NULL,
+  refresh_token TEXT NOT NULL,
+  user_id VARCHAR(50) NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE logs(
+  id VARCHAR(50) PRIMARY KEY,
+  description TEXT NOT NULL,
+  payload TEXT NOT NULL,
+  service VARCHAR(255) NOT NULL,
+  is_test BOOLEAN NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  removed_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL
+);
